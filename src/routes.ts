@@ -1,13 +1,7 @@
-import { Server } from "@hapi/hapi"
+import { Server } from '@hapi/hapi';
+
+import { indexRoutes } from './app/index/index.route';
 
 export const defineRoutes = (server: Server) => {
-    server.route({
-        method: 'GET',
-        path: '/ping',
-        handler: async (request, h) => {
-            return {
-                ok: true
-            }
-        }
-    })  
+    indexRoutes(server);
 }
