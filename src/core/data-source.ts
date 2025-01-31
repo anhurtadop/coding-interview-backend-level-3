@@ -11,5 +11,5 @@ export const appDataSource = new DataSource({
   database: config.db.name,
   entities: [Item],
   synchronize: true,
-  logging: true,
+  logging: false,
 });

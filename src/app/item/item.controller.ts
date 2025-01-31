@@ -1,16 +1,22 @@
-import { appDataSource } from "../../core/data-source"
-import { Item } from "../../core/entities/item.entity"
+import { appDataSource } from "../../core/data-source";
+import { Item } from "../../core/entities/item.entity";
+import { formatItem } from "../../core/utils/format.util";
 
-export const fetchAll = async () => {
-  return await appDataSource.getRepository(Item).find();
+export const fetchAll = async (request: any, h: any) => {
+  const records = await appDataSource.getRepository(Item).find();
+  const list = records.map((record) => formatItem(record));
+  return h.response(list).code(200);
 }
 
 export const detailById = async (request: any, h: any) => {
   const id = parseInt(request.params.id, 10);
   if (isNaN(id)) return h.response().code(404);
 
-  const item = await appDataSource.getRepository(Item).findOneBy({ id });
-  return item ? item : h.response().code(404);
+  const record = await appDataSource.getRepository(Item).findOneBy({ id });
+  if (!record) return h.response().code(404);
+
+  const item = formatItem(record);
+  return h.response(item).code(200);
 }
 
 export const create = async (request: any, h: any) => {

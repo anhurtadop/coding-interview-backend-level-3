@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, UpdateDateColumn, CreateDateColumn} from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity({ name: 'item' })
 export class Item {
@@ -10,10 +10,4 @@ export class Item {
 
   @Column({ type: 'decimal', precision: 6, scale: 2 })
   price!: number;
-
-  @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt!: Date;
-
-  @CreateDateColumn({ name: 'created_at' })
-  createdAt!: Date;
 }

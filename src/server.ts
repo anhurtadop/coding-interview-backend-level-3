@@ -22,6 +22,7 @@ export const initializeServer = async () => {
 }
 
 export const startServer = async () => {
+    await initializeServer();
     const server = getServer();
     if (!appDataSource.isInitialized) {
         await appDataSource.initialize();
