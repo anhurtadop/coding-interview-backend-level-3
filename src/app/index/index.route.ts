@@ -1,5 +1,4 @@
 import { Server } from '@hapi/hapi';
-
 import { ping } from './index.controller';
 
 export const indexRoutes = (server: Server) => {

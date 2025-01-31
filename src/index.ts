@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { initializeServer, startServer } from './server';
 
 process.on('unhandledRejection', (err) => {
