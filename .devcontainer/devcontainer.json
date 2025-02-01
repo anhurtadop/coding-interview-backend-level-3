@@ -1,8 +1,19 @@
-// See https://containers.dev/implementors/json_reference/ for configuration reference
 {
-	"name": "Coding Interview Backend Level 3",
-	"build": {
-		"dockerfile": "Dockerfile"
-	},
-  "remoteUser": "node"
+  "name": "Node.js & PostgreSQL",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": []
+    }
+  },
+  "portsAttributes": {
+    "3000": {
+      "label": "NodeJS API",
+      "onAutoForward": "notify"
+    }
+  },
+  "postCreateCommand": "npm install"
 }
